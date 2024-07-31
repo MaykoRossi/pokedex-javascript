@@ -1,46 +1,75 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pokedex</title>
 
-    <!-- Normalize CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
-        integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-    <!-- Font Roboto -->
+    <!--NORMALIZE CSS-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <!--FONTE ROBOTO-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;500;700&display=swap" rel="stylesheet">
-
-    <!-- Nosso CSS -->
-    <link rel="stylesheet" href="/assets/css/global.css">
-    <link rel="stylesheet" href="/assets/css/pokedex.css">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100&display=swap" rel="stylesheet">
+    
+<!--global CSS-->
+<link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-    <section class="content">
-        <h1>Pokedex</h1>
+  <section class="content">
+    <h1>Pokedex</h1>
+    <ol id="pokemonList" class="pokemons">
 
-        <ol id="pokemonList" class="pokemons">
-            <!-- ..... Pokemons here ..... -->
-        </ol>
+        <!-- <li class="pokemon">
+          <span class="number">#001</span>
+          <span class="name">Bulbasaur</span>
 
-        <div class="pagination">
-            <button id="loadMoreButton" type="button">
-                Load More
-            </button>
-        </div>
-    </section>
+          <div class="detail">
+            <ol class="types">
+              <li class="type">Grass</li>
+              <li class="type">Poison</li>
+            </ol>
 
-    <!-- Nosso JS -->
-    <script src="/assets/js/pokemon-model.js"></script>
-    <script src="/assets/js/poke-api.js"></script>
-    <script src="/assets/js/main.js"></script>
+            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/1.svg" alt="Bulbasaur">
+          </div>
+        </li> -->
+
+        <!--Pokemons aqui-->
+<!-- Lightbox HTML -->
+<div id="pokemonLightbox" class="lightbox">
+  <div class="lightbox-content">
+      <span id="lightboxClose" class="close">X</span>
+      <h2 id="pokemonName"></h2>
+      <img id="pokemonImage" src="" alt="">
+      <p><strong>ID:</strong> <span id="pokemonId"></span></p>
+      <p><strong>Type:</strong> <span id="pokemonTypes"></span></p>
+      <p><strong>Abilities:</strong> <span id="pokemonAbilities"></span></p>
+      <p><strong>Moves:</strong> <span id="pokemonMoves"></span></p>
+      <p><strong>Weaknesses:</strong> <span id="pokemonWeaknesses"></span></p>
+      <p><strong>Advantages:</strong> <span id="pokemonAdvantages"></span></p>
+      <div class="additional-info">
+          <p><strong>Region:</strong> <span id="pokemonRegion"></span></p>
+          <div class="stats-container" id="pokemonStatsContainer">
+              <p><strong>Stats:</strong></p>
+              <div id="pokemonStats"></div>
+          </div>
+      </div>
+  </div>
+</div>
+        
+    </ol>
+
+    <div class="pagination">
+      <ul id="pokemonList" class="pokemons"></ul>
+      <button id="loadMoreButton">Load More</button>
+  </div>
+  </section>
 </body>
-
 </html>
+
+<!--Main JS-->
+<script src="pokemon-model.js"></script>
+<script src="poke-api.js"></script>
+<script src="main.js"></script>
+<script src="lightbox-poke.js"></script>

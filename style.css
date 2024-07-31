@@ -1,0 +1,329 @@
+* {
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
+    text-decoration: none; /* Remove o sublinhado de todos os textos */
+}
+
+body {
+    background-color: rgba(240, 248, 255, 0.575);
+}
+
+h1 {
+    color: white;
+    font-style: italic;
+    font-weight: bold;
+    -webkit-text-stroke: 2px black;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.content {
+    padding: 1rem;
+    height: 100vh;
+    width: 100vw;
+    min-height: 100vh; /* Garante que o corpo ocupe pelo menos 100% da altura da viewport */
+    overflow-x: hidden; /* Impede a rolagem horizontal */
+    background-image: url('https://wallpapercave.com/wp/wp8813113.jpg'); /* Caminho para a imagem da Pokébola */
+    background-size: cover; /* Garante que o background cubra toda a área */
+    background-position: center; /* Centraliza a imagem da Pokébola */
+    background-repeat: no-repeat; /* Impede a repetição da imagem */
+    background-attachment: fixed; /* Mantém o background fixo durante a rolagem */
+}
+
+@media screen and (min-width: 992px) {
+    .content {
+        max-width: 992px;
+        height: auto;
+        margin: 1rem auto;
+        border-radius: 1rem;
+    }
+}
+
+.pokemons {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 0.5rem;
+    grid-template-columns: 1fr;
+}
+
+@media screen and (min-width: 380px) {
+    .pokemons {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media screen and (min-width: 576px) {
+    .pokemons {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .pokemons {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+}
+
+.pokemon {
+    display: flex;
+    flex-direction: column;
+    margin: 0.5rem;
+    padding: 1rem;
+    color: white;
+    border-radius: 2rem;
+    transition: transform 0.3s, box-shadow 0.3s; /* Adiciona transição para o efeito de hover */
+    overflow: hidden; /* Garante que o conteúdo não ultrapasse os limites do card */
+}
+
+.pokemon:hover {
+    transform: scale(1.05); /* Aumenta um pouco o tamanho do card ao passar o cursor */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Adiciona uma sombra ao card */
+}
+
+.pokemon .name {
+    color: white;
+    margin-bottom: 0.25rem;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.pokemon .number {
+    text-align: right;
+    color: antiquewhite;
+    opacity: 0.6;
+}
+
+.pokemon .detail {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.pokemon .detail .types {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    text-transform: uppercase;
+}
+
+.pokemon .detail .types .type {
+    color: rgb(255, 255, 255);
+    padding: 0.25rem 0.5rem;
+    margin: 0.25rem;
+    font-size: 0.825rem;
+    border-radius: 1rem;
+    text-transform: uppercase;
+    text-shadow: black 0.1em 0.1em 0.2em;
+    filter: brightness(1.2);
+}
+
+.pokemon .detail img {
+    max-width: 100%;
+    height: 70px;
+    align-self: flex-end;
+}
+
+/* Type Colours */
+
+.normal {
+    background-color: #A8A77A;
+}
+.fire {
+    background-color: #EE8130;
+}
+.water {
+    background-color: #6390F0;
+}
+.electric {
+    background-color: #F7D02C;
+}
+.grass {
+    background-color: #7AC74C;
+}
+.ice {
+    background-color: #96D9D6;
+}
+.fighting {
+    background-color: #C22E28;
+}
+.poison {
+    background-color: #A33EA1;
+}
+.ground {
+    background-color: #E2BF65;
+}
+.flying {
+    background-color: #A98FF3;
+}
+.psychic {
+    background-color: #F95587;
+}
+.bug {
+    background-color: #A6B91A;
+}
+.rock {
+    background-color: #B6A136;
+}
+.ghost {
+    background-color: #735797;
+}
+.dragon {
+    background-color: #6F35FC;
+}
+.dark {
+    background-color: #705746;
+}
+.steel {
+    background-color: #B7B7CE;
+}
+.fairy {
+    background-color: #D685AD;
+}
+
+.pagination {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    justify-content: center;
+    width: 100%;
+    padding: 1.5rem;
+}
+
+.pagination button {
+    background-color: #A98FF3;
+    color: white;
+    font-weight: 500;
+    border-radius: 1rem;
+}
+
+
+
+
+/* LIGHTBOX */
+
+/* CSS do Lightbox */
+.lightbox {
+    display: none; /* Oculto por padrão */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Fundo escurecido */
+    z-index: 1000; /* Colocado acima de outros conteúdos */
+    align-items: center; /* Centraliza verticalmente */
+    justify-content: center; /* Centraliza horizontalmente */
+  }
+  
+  .lightbox.show {
+    display: flex; /* Exibe o lightbox quando ativado */
+  }
+  
+  .lightbox-content {
+    background: #fff;
+    padding: 20px;
+    border-radius: 1rem; /* Bordas arredondadas */
+    width: 90%;
+    max-width: 600px;
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+/* CSS para o botão de fechar */
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px; /* Ajustado para garantir uma margem consistente */
+    font-size: 24px;
+    cursor: pointer;
+    color: #333; /* Cor do ícone de fechar */
+    z-index: 1100; /* Certifique-se de que está acima de outros elementos */
+    background: rgba(255, 255, 255, 0.8); /* Fundo ligeiramente transparente para melhor visibilidade */
+    border-radius: 50%; /* Arredondar o fundo para se parecer com um círculo */
+    padding: 5px; /* Espaçamento interno para o ícone */
+    transition: background 0.3s ease, color 0.3s ease; /* Transição suave para efeitos de hover */
+}
+
+/* Efeito de hover no botão de fechar */
+.close:hover {
+    background: rgba(255, 255, 255, 0.9); /* Fundo um pouco mais opaco ao passar o mouse */
+    color: #000; /* Alterar a cor do ícone ao passar o mouse */
+}
+
+/* Estilizar a imagem dentro da lightbox */
+.lightbox-content img {
+    max-width: 100%;
+    border-radius: 1rem; /* Bordas arredondadas */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra da imagem para um efeito de profundidade */
+}
+  
+  /* CSS das barras de stats */
+  .stats-container {
+    width: 100%;
+    margin-top: 10px;
+  }
+  
+  .stat-bar {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    width: 100%;
+  }
+  
+  .stat-bar span {
+    width: 120px; /* Ajustado para melhor alinhamento */
+    color: #000; /* Cor do texto */
+    font-weight: bold;
+  }
+  
+  .stat-bar .bar-container {
+    flex: 1;
+    background-color: #ddd;
+    border-radius: 1rem; /* Bordas arredondadas */
+    overflow: hidden;
+    margin-left: 10px;
+  }
+  
+  .stat-bar .bar {
+    height: 1rem; /* Altura da barra */
+    line-height: 1rem; /* Alinhamento vertical do texto */
+    color: #000; /* Cor do texto dentro da barra (preto para contraste) */
+    text-align: center;
+    font-weight: bold;
+    background-color: #fff; /* Cor de fundo da barra (branca) */
+    border: 1px solid #ddd; /* Borda para definir um contorno suave */
+    border-radius: 0.5rem; /* Bordas arredondadas para um efeito visual melhor */
+}
+  
+  /* Cores específicas para cada tipo de stat */
+  .stat-bar .bar.hp {
+    background-color: #ff5959;
+  }
+  
+  .stat-bar .bar.attack {
+    background-color: #f5ac78;
+  }
+  
+  .stat-bar .bar.defense {
+    background-color: #fae078;
+  }
+  
+  .stat-bar .bar.special-attack {
+    background-color: #9db7f5;
+  }
+  
+  .stat-bar .bar.special-defense {
+    background-color: #a7db8d;
+  }
+  
+  .stat-bar .bar.speed {
+    background-color: #fa92b2;
+  }
+  
